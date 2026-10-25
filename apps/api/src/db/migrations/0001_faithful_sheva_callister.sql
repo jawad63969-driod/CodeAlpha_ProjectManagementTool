@@ -1,0 +1,1 @@
+CREATE INDEX `tasks_board_column_pos_idx` ON `tasks` (`board_id`,`column_id`,`position`);

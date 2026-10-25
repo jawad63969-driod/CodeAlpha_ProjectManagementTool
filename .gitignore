@@ -1,0 +1,22 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+*.log
+npm-debug.log*
+apps/api/data/
+apps/api/storage/
+
+# A nested copy of this whole project once lived here and would have been half of
+# every commit. Deleted, and ignored so it cannot return by accident.
+taskforge-dashboard/
+coverage/
+playwright-report/
+test-results/
+.turbo/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.tsbuildinfo

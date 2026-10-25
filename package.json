@@ -1,0 +1,31 @@
+{
+  "name": "taskforge",
+  "version": "2.0.0",
+  "private": true,
+  "description": "TaskForge — enterprise work management platform (CodeAlpha Task 3, v2)",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build -w @taskforge/shared && npm run build -w @taskforge/api && npm run build -w @taskforge/web",
+    "typecheck": "npm run typecheck -w @taskforge/shared && npm run typecheck -w @taskforge/api && npm run typecheck -w @taskforge/web",
+    "lint:tokens": "node scripts/lint-tokens.mjs",
+    "verify": "npm run typecheck && npm run lint:tokens && npm test && npm run build",
+    "test": "npm run test -w @taskforge/api",
+    "test:e2e": "node qa/e2e.mjs",
+    "shots": "node qa/shots.mjs",
+    "widths": "node qa/widths.mjs",
+    "db:generate": "npm run db:generate -w @taskforge/api",
+    "db:migrate": "npm run db:migrate -w @taskforge/api",
+    "seed": "npm run seed -w @taskforge/api",
+    "reset": "npm run reset -w @taskforge/api",
+    "test:error-states": "node qa/error-states.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

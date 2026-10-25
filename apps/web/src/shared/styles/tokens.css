@@ -1,0 +1,227 @@
+/* ==========================================================================
+   TaskForge — design tokens
+
+   Four scales, and they are real: colour, space, type, radius. The rule the
+   previous stylesheet claimed but did not keep is enforced here instead —
+   no component file may contain a raw px value for spacing or font-size.
+   `npm run lint:tokens` fails the build if one appears (scripts/lint-tokens.mjs;
+   its documented exceptions are listed at the top of that file).
+
+   Spacing is a 4px grid. Type is an 8-step scale. Both are deliberately
+   small: a dense work tool needs few sizes used consistently, not many
+   used approximately.
+   ========================================================================== */
+
+:root {
+  /* --- space -------------------------------------------------------- */
+  --sp-0: 0;
+  --sp-px: 1px;
+  --sp-1: 2px;
+  --sp-2: 4px;
+  --sp-3: 8px;
+  --sp-4: 12px;
+  --sp-5: 16px;
+  --sp-6: 20px;
+  --sp-7: 24px;
+  --sp-8: 32px;
+  --sp-9: 40px;
+  --sp-10: 48px;
+  --sp-11: 64px;
+  --sp-12: 80px;
+
+  /* --- type --------------------------------------------------------- */
+  --fs-nano: 10px;
+  --fs-micro: 11px;
+  --fs-small: 12px;
+  --fs-body: 13px;
+  --fs-mid: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+
+  --lh-tight: 1.25;
+  --lh-snug: 1.4;
+  --lh-normal: 1.55;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semi: 560;
+  --fw-bold: 640;
+
+  --tracking-wide: 0.04em;
+  --tracking-caps: 0.06em;
+
+  /* --- radius ------------------------------------------------------- */
+  --r-1: 4px;
+  --r-2: 6px;
+  --r-3: 8px;
+  --r-4: 12px;
+  --r-full: 999px;
+
+  /* --- layout ------------------------------------------------------- */
+  --topbar-h: 48px;
+  --sidebar-w: 224px;
+  --rail-w: 320px;
+  --drawer-w: 640px;
+  /* 256 is the widest a column can be while the four-column default workflow
+     still fits a 1366px laptop beside the sidebar without scrolling. Columns
+     grow past it whenever there is room. */
+  --column-w: 256px;
+  /* Wide enough that a 1920px desktop is filled edge to edge, with a cap that
+     only engages on ultra-wide displays so a row of metadata never ends up a
+     metre from the title it belongs to. */
+  --page-max: 1760px;
+
+  /* --- motion ------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 90ms;
+  --dur: 140ms;
+
+  /* --- fonts -------------------------------------------------------- */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+/* ==========================================================================
+   Colour — light
+   Near-white canvas, white surfaces, hairline borders. Contrast between
+   canvas and surface is intentionally small; separation comes from the
+   border, not from a grey step, which is what keeps the density readable.
+   ========================================================================== */
+
+:root {
+  --canvas: #fafafa;
+  --surface: #ffffff;
+  --surface-hover: #f6f6f7;
+  --surface-active: #f0f0f2;
+  --sunken: #f4f4f5;
+  --overlay: rgba(12, 13, 16, 0.28);
+
+  --border: #e6e6e8;
+  --border-strong: #d3d3d7;
+  --border-focus: #5e6ad2;
+
+  --text: #16161a;
+  --text-2: #64646b;
+  --text-3: #8e8e97;
+  --text-on-accent: #ffffff;
+
+  --accent: #5e6ad2;
+  --accent-hover: #515dc7;
+  --accent-active: #4750b4;
+  --accent-soft: #eef0fc;
+  --accent-border: #c9cef3;
+  --accent-text: #4750b4;
+
+  --danger: #d93a3f;
+  --danger-soft: #fdeceb;
+  --danger-border: #f6c9c7;
+  --danger-text: #b62a30;
+
+  --warn: #c77a13;
+  --warn-soft: #fdf3e2;
+  --warn-border: #f0dcb4;
+  --warn-text: #94590b;
+
+  --ok: #2f9e68;
+  --ok-soft: #e9f7ef;
+  --ok-border: #bfe6d0;
+  --ok-text: #22794f;
+
+  --info: #3d7fd6;
+  --info-soft: #ebf3fd;
+  --info-border: #c3daf6;
+  --info-text: #2b63ad;
+
+  /* Priority — ordered, and distinguishable without colour because each
+     also carries its own glyph in the UI. */
+  --prio-urgent: #d93a3f;
+  --prio-high: #dd7b1e;
+  --prio-medium: #3d7fd6;
+  --prio-low: #8e8e97;
+
+  /* Workflow categories */
+  --cat-todo: #9b9ba3;
+  --cat-progress: #dd9a1e;
+  --cat-done: #2f9e68;
+
+  /* The sign-in panel is a fixed brand surface in both themes, so its
+     foreground does not follow --text. These are its tokens. */
+  --on-brand: #ffffff;
+  --on-brand-muted: rgba(255, 255, 255, 0.82);
+  --on-brand-strong: rgba(255, 255, 255, 0.92);
+  --on-brand-veil: rgba(255, 255, 255, 0.16);
+
+  --shadow-1: 0 1px 2px rgba(18, 19, 24, 0.05);
+  --shadow-2: 0 2px 6px rgba(18, 19, 24, 0.07), 0 0 0 1px rgba(18, 19, 24, 0.03);
+  --shadow-3: 0 12px 34px rgba(18, 19, 24, 0.14), 0 0 0 1px rgba(18, 19, 24, 0.05);
+  --ring: 0 0 0 2px var(--canvas), 0 0 0 4px rgba(94, 106, 210, 0.5);
+  --ring-inset: inset 0 0 0 1px var(--accent), 0 0 0 3px rgba(94, 106, 210, 0.16);
+}
+
+/* ==========================================================================
+   Colour — dark
+   Surfaces are separated by at least one clear step (#0b0c0d → #141517 →
+   #1a1b1f). The previous theme put cards at #161926 on columns at #1c2030,
+   a ratio of about 1.1:1, which erased the board's structure entirely.
+   ========================================================================== */
+
+:root[data-theme='dark'] {
+  --canvas: #0b0c0d;
+  --surface: #141517;
+  --surface-hover: #1b1c1f;
+  --surface-active: #212226;
+  --sunken: #101113;
+  --overlay: rgba(0, 0, 0, 0.62);
+
+  --border: #26272b;
+  --border-strong: #35363c;
+  --border-focus: #7c86e8;
+
+  --text: #f2f3f5;
+  --text-2: #9a9ba4;
+  --text-3: #6e6f78;
+  --text-on-accent: #ffffff;
+
+  --accent: #7c86e8;
+  --accent-hover: #8a93ec;
+  --accent-active: #6b76e0;
+  --accent-soft: #1d1f33;
+  --accent-border: #343a63;
+  --accent-text: #aeb5f4;
+
+  --danger: #f06e72;
+  --danger-soft: #2a1618;
+  --danger-border: #4d2427;
+  --danger-text: #f4999c;
+
+  --warn: #e3a044;
+  --warn-soft: #271c0d;
+  --warn-border: #4a3517;
+  --warn-text: #efbe7c;
+
+  --ok: #4cb782;
+  --ok-soft: #0f2419;
+  --ok-border: #1e442f;
+  --ok-text: #7fcfa4;
+
+  --info: #6aa5ef;
+  --info-soft: #111d2e;
+  --info-border: #22375a;
+  --info-text: #9cc4f5;
+
+  --prio-urgent: #f06e72;
+  --prio-high: #e3a044;
+  --prio-medium: #6aa5ef;
+  --prio-low: #7a7b85;
+
+  --cat-todo: #7a7b85;
+  --cat-progress: #e3a044;
+  --cat-done: #4cb782;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-3: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --ring: 0 0 0 2px var(--canvas), 0 0 0 4px rgba(124, 134, 232, 0.55);
+  --ring-inset: inset 0 0 0 1px var(--accent), 0 0 0 3px rgba(124, 134, 232, 0.22);
+}
